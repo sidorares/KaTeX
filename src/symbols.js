@@ -2493,6 +2493,11 @@ var symbols = {
             font: "main",
             group: "accent",
             replace: "\u02d9"
+        },
+        "\\degree": {
+            font: "main",
+            group: "textord",
+            replace: "\u00b0"
         }
     },
     "text": {
