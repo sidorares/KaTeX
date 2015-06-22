@@ -10,5 +10,6 @@ fi
 
 docker run \
        --env baseURL="http://${IP}:7936/" \
+       --env dstDir="/KaTeX/test/screenshotter/images/" \
        --volume="${BASE}":/KaTeX \
        "${IMAGE}" /KaTeX/dockers/Phantom/live.js

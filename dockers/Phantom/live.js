@@ -5,6 +5,7 @@ var webpage = require("webpage")
 var data = require("../../test/screenshotter/ss_data.json");
 var toStrip = "http://localhost:7936/";
 var baseURL = system.env.baseURL || toStrip;
+var dstDir = system.env.dstDir || "test/screenshotter/images/";
 
 var todo = Object.keys(data);
 next();
@@ -20,7 +21,7 @@ function next() {
     var page = webpage.create();
     page.viewportSize = { width: 1024, height: 768 };
     page.open(url, function() {
-        page.render("/KaTeX/test/screenshotter/images/" + key + "-phantom.png");
+        page.render(dstDir + key + "-phantom.png");
         console.log(key);
         next();
     });
