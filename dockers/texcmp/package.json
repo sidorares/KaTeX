@@ -1,0 +1,10 @@
+{
+  "name": "texcmp",
+  "description": "KaTeX helper to compare LaTeX output against screenshots",
+  "license": "MIT",
+  "dependencies": {
+    "ndarray-fft": "1.0.0",
+    "node-png": "0.4.3",
+    "q": "1.4.1"
+  }
+}
