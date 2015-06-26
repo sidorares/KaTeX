@@ -23,7 +23,6 @@ var ParseResult = parseData.ParseResult;
  * - args: an array of arguments passed to \begin{name}
  * The context contains the following properties:
  * - pos: the current position of the parser.
- * - mode: the current parsing mode.
  * - envName: the name of the environment, one of the listed names.
  * - parser: the parser object
  * - lexer: the lexer object
@@ -57,11 +56,11 @@ function defineEnvironment(names, props, handler) {
  * columns delimited by &, and create a nested list in row-major order
  * with one group per cell.
  */
-function parseArray(parser, pos, mode, result) {
+function parseArray(parser, pos, result) {
     var row = [], body = [row], rowGaps = [];
     while (true) {
-        var cell = parser.parseExpression(pos, mode, false, null);
-        row.push(new ParseNode("ordgroup", cell.result, mode));
+        var cell = parser.parseExpression(pos, false, null);
+        row.push(new ParseNode("ordgroup", cell.result, parser.mode));
         pos = cell.position;
         var next = cell.peek.text;
         if (next === "&") {
@@ -69,7 +68,7 @@ function parseArray(parser, pos, mode, result) {
         } else if (next === "\\end") {
             break;
         } else if (next === "\\\\" || next === "\\cr") {
-            var cr = parser.parseFunction(pos, mode);
+            var cr = parser.parseFunction(pos);
             rowGaps.push(cr.result.value.size);
             pos = cr.position;
             row = [];
@@ -81,7 +80,8 @@ function parseArray(parser, pos, mode, result) {
     }
     result.body = body;
     result.rowGaps = rowGaps;
-    return new ParseResult(new ParseNode(result.type, result, mode), pos);
+    return new ParseResult(
+        new ParseNode(result.type, result, parser.mode), pos);
 }
 
 // Arrays are part of LaTeX, defined in lttab.dtx so its documentation
@@ -108,7 +108,7 @@ defineEnvironment("array", {
         colalign: colalign,
         hskipBeforeAndAfter: true // \@preamble in lttab.dtx
     };
-    res = parseArray(context.parser, context.pos, context.mode, res);
+    res = parseArray(context.parser, context.pos, res);
     return res;
 });
     
@@ -130,7 +130,7 @@ defineEnvironment(["matrix", "pmatrix", "bmatrix", "vmatrix", "Vmatrix"], {
         type: "array",
         hskipBeforeAndAfter: false // \hskip -\arraycolsep in amsmath
     };
-    res = parseArray(context.parser, context.pos, context.mode, res);
+    res = parseArray(context.parser, context.pos, res);
     if (delimiters) {
         res.result = new ParseNode("leftright", {
             body: [res.result],
