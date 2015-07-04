@@ -474,6 +474,27 @@ var duplicatedFunctions = [
         }
     },
 
+    {
+        funcs: [
+            // styles
+            "\\mathrm", "\\mathit", "\\mathbf",
+
+            // families
+            "\\mathbb",  "\\mathcal", "\\mathfrak", "\\mathscr", "\\mathsf",
+            "\\mathtt"
+        ],
+        data: {
+            numArgs: 1,
+            handler: function (func, body) {
+                return {
+                    type: "font",
+                    font: func.slice(1),
+                    body: body
+                };
+            }
+        }
+    },
+
     // Accents
     {
         funcs: [
