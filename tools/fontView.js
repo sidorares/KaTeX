@@ -61,7 +61,7 @@ function fontData() {
         var str = String.fromCharCode(code);
         var name = n.getAttribute("name");
         var tr = document.createElement("tr");
-        tr.appendChild(td(code, "code"));
+        tr.appendChild(td(code.toString(16), "code"));
         tr.appendChild(td(str, "curfont"));
         tr.appendChild(td(str, "reffont"));
         tr.appendChild(td(name, "name"));
