@@ -44,7 +44,7 @@ var groupToType = {
     close: "mclose",
     inner: "minner",
     genfrac: "minner",
-    array: "minner",
+    array: "mord",
     spacing: "mord",
     punct: "mpunct",
     ordgroup: "mord",
@@ -609,7 +609,7 @@ var groupTypes = {
             }
         }
         body = makeSpan(["mtable"], cols);
-        return makeSpan(["minner"], [body], options.getColor());
+        return makeSpan(["mord"], [body], options.getColor());
     },
 
     spacing: function(group, options, prev) {
