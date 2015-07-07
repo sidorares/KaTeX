@@ -135,21 +135,17 @@ Parser.prototype.parseExpression = function(breakOnInfix, breakOnToken) {
     // we reached the end, a }, or a \right)
     while (true) {
         var lex = this.nextToken;
-        var pos = this.pos;
         if (endOfExpression.indexOf(lex.text) !== -1) {
             break;
         }
         if (breakOnToken && lex.text === breakOnToken) {
             break;
         }
-        var atom = this.parseAtom();
-        if (!atom) {
+        if (breakOnInfix && functions[lex.text] && functions[lex.text].infix) {
             break;
         }
-        if (breakOnInfix && atom.type === "infix") {
-            // rewind so we can parse the infix atom again
-            this.pos = pos;
-            this.nextToken = lex;
+        var atom = this.parseAtom();
+        if (!atom) {
             break;
         }
         body.push(atom);
