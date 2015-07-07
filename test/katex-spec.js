@@ -1361,3 +1361,23 @@ describe("A MathML builder", function() {
         expect(phantom.children[0].type).toEqual("mphantom");
     });
 });
+
+describe("A macro expander", function() {
+
+    var compareParseTree = function(actual, expected, macros) {
+        actual = parseTree(actual, new Settings({macros: macros}));
+        expected = parseTree(expected, defaultSettings);
+        expect(actual).toEqual(expected);
+    };
+
+    it("should produce individual tokens", function() {
+        compareParseTree("e^\\foo", "e^1 23", {"\\foo": "123"});
+    });
+
+    it("should allow for multiple expansion", function() {
+        compareParseTree("1\\foo2", "1aa2", {
+            "\\foo": "\\bar\\bar",
+            "\\bar": "a"
+        });
+    });
+});
