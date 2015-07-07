@@ -3,17 +3,19 @@
  * functions when something has gone wrong. This is used to distinguish internal
  * errors from errors in the expression that the user provided.
  */
-function ParseError(message, lexer, position) {
+function ParseError(message, token) {
     var error = "KaTeX parse error: " + message;
+    var position;
 
-    if (lexer !== undefined && position !== undefined) {
+    if (token && token.lexer) {
         // If we have the input and a position, make the error a bit fancier
 
         // Prepend some information
+        position = token.start;
         error += " at position " + position + ": ";
 
         // Get the input
-        var input = lexer._input;
+        var input = token.lexer.input;
         // Insert a combining underscore at the correct position
         input = input.slice(0, position) + "\u0332" +
             input.slice(position);

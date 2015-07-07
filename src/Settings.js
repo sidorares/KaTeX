@@ -21,6 +21,7 @@ function Settings(options) {
     // allow null options
     options = options || {};
     this.displayMode = get(options.displayMode, false);
+    this.macros = options.macros;
 }
 
 module.exports = Settings;
