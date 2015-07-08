@@ -465,26 +465,20 @@ defineFunction([
     "\\scriptscriptstyle"
 ], 0, null);
 
-    {
-        funcs: [
-            // styles
-            "\\mathrm", "\\mathit", "\\mathbf",
+defineFunction([
+    // styles
+    "\\mathrm", "\\mathit", "\\mathbf",
 
-            // families
-            "\\mathbb",  "\\mathcal", "\\mathfrak", "\\mathscr", "\\mathsf",
-            "\\mathtt"
-        ],
-        data: {
-            numArgs: 1,
-            handler: function (func, body) {
-                return {
-                    type: "font",
-                    font: func.slice(1),
-                    body: body
-                };
-            }
-        }
-    },
+    // families
+    "\\mathbb",  "\\mathcal", "\\mathfrak", "\\mathscr", "\\mathsf", "\\mathtt"
+], 1, function(context, args) {
+    var body = args[0];
+    return {
+        type: "font",
+        font: context.func.slice(1),
+        body: body
+    };
+});
 
 // Accents
 defineFunction([
