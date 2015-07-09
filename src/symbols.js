@@ -1951,16 +1951,6 @@ var symbols = {
             group: "open",
             replace: "\u2225"
         },
-        "\\lgroup": {
-            font: "main",
-            group: "open",
-            replace: "\u27ee"
-        },
-        "\\lmoustache": {
-            font: "main",
-            group: "open",
-            replace: "\u23b0"
-        },
         ")": {
             font: "main",
             group: "close"
@@ -1991,16 +1981,6 @@ var symbols = {
             font: "main",
             group: "close",
             replace: "\u2225"
-        },
-        "\\rgroup": {
-            font: "main",
-            group: "close",
-            replace: "\u27ef"
-        },
-        "\\rmoustache": {
-            font: "main",
-            group: "close",
-            replace: "\u23b1"
         },
         "=": {
             font: "main",
