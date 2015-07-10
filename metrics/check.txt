@@ -1,0 +1,181 @@
+ ! Verify name yen of KaTeX_AMS-Regular glyph U+00a5 matches Yen of msam10 glyph 85=0x55
+ ! Verify name registered of KaTeX_AMS-Regular glyph U+00ae matches circleR of msam10 glyph 114=0x72
+ ! Verify name hbar of KaTeX_AMS-Regular glyph U+0127 matches planckover2pi1 of msbm10 glyph 126=0x7e
+ ! Verify name circumflex of KaTeX_AMS-Regular glyph U+02c6 matches hatwider of msbm10 glyph 92=0x5c
+ ! Verify name tilde of KaTeX_AMS-Regular glyph U+02dc matches tildewider of msbm10 glyph 94=0x5e
+ ! Verify name tildecomb of KaTeX_AMS-Regular glyph U+0303 matches tildewider of msbm10 glyph 94=0x5e
+ ! Verify name arrowleft of KaTeX_AMS-Regular glyph U+2190 matches arrowaxisleft of msam10 glyph 76=0x4c
+ ! Verify name arrowright of KaTeX_AMS-Regular glyph U+2192 matches arrowaxisright of msam10 glyph 75=0x4b
+ ! Verify name minus of KaTeX_AMS-Regular glyph U+2212 matches axisshort of msam10 glyph 57=0x39
+ ! Verify name dotmath of KaTeX_AMS-Regular glyph U+22c5 matches squaresmallsolid of msam10 glyph 5=0x05
+ ! Verify name SF010000 of KaTeX_AMS-Regular glyph U+250c matches rightanglenw of msam10 glyph 112=0x70
+ ! Verify name SF030000 of KaTeX_AMS-Regular glyph U+2510 matches rightanglene of msam10 glyph 113=0x71
+ ! Verify name SF020000 of KaTeX_AMS-Regular glyph U+2514 matches rightanglesw of msam10 glyph 120=0x78
+ ! Verify name SF040000 of KaTeX_AMS-Regular glyph U+2518 matches rightanglese of msam10 glyph 121=0x79
+ ! Verify name filledbox of KaTeX_AMS-Regular glyph U+25a0 matches squaresolid of msam10 glyph 4=0x04
+ ! Verify name H22073 of KaTeX_AMS-Regular glyph U+25a1 matches square of msam10 glyph 3=0x03
+ ! Verify name triagup of KaTeX_AMS-Regular glyph U+25b2 matches trianglesolid of msam10 glyph 78=0x4e
+ ! Verify name triagdn of KaTeX_AMS-Regular glyph U+25bc matches triangledownsld of msam10 glyph 72=0x48
+ ! Verify name lozenge of KaTeX_AMS-Regular glyph U+25ca matches diamond of msam10 glyph 6=0x06
+AMS-Regular: checked 260 codepoints
+ ! Verify name quotedbl of KaTeX_Main-Bold glyph U+0022 matches quotedblright of cmbx10 glyph 34=0x22
+ ! Verify name quotesingle of KaTeX_Main-Bold glyph U+0027 matches quoteright of cmbx10 glyph 39=0x27
+ ! Verify name asciicircum of KaTeX_Main-Bold glyph U+005e matches circumflex of cmbx10 glyph 94=0x5e
+ ! Verify name underscore of KaTeX_Main-Bold glyph U+005f matches endash of cmbx10 glyph 123=0x7b
+ ! Verify name asciitilde of KaTeX_Main-Bold glyph U+007e matches tilde of cmbx10 glyph 126=0x7e
+ ! Verify name degree of KaTeX_Main-Bold glyph U+00b0 matches ring of cmbx10 glyph 23=0x17
+ ! Verify name gravecomb of KaTeX_Main-Bold glyph U+0300 matches grave of cmbx10 glyph 18=0x12
+ ! Verify name acutecomb of KaTeX_Main-Bold glyph U+0301 matches acute of cmbx10 glyph 19=0x13
+ ! Verify name tildecomb of KaTeX_Main-Bold glyph U+0303 matches tilde of cmbx10 glyph 126=0x7e
+ ! Codepoint U+2002 of font Main-Bold has no metrics (EN SPACE)
+ ! Codepoint U+2003 of font Main-Bold has no metrics (EM SPACE)
+ ! Codepoint U+2004 of font Main-Bold has no metrics (THREE-PER-EM SPACE)
+ ! Codepoint U+2005 of font Main-Bold has no metrics (FOUR-PER-EM SPACE)
+ ! Codepoint U+2006 of font Main-Bold has no metrics (SIX-PER-EM SPACE)
+ ! Codepoint U+2009 of font Main-Bold has no metrics (THIN SPACE)
+ ! Codepoint U+200a of font Main-Bold has no metrics (HAIR SPACE)
+ ! Codepoint U+2026 of font Main-Bold has no metrics (ellipsis)
+ ! Verify name minute of KaTeX_Main-Bold glyph U+2032 matches prime of cmbsy10 glyph 48=0x30
+ ! Verify name Ifraktur of KaTeX_Main-Bold glyph U+2111 matches Ifractur of cmbsy10 glyph 61=0x3d
+ ! Verify name afii61289 of KaTeX_Main-Bold glyph U+2113 matches lscript of cmmib10 glyph 96=0x60
+ ! Verify name Rfraktur of KaTeX_Main-Bold glyph U+211c matches Rfractur of cmbsy10 glyph 60=0x3c
+ ! Verify name arrowupdn of KaTeX_Main-Bold glyph U+2195 matches arrowbothv of cmbsy10 glyph 108=0x6c
+ ! Codepoint U+21a6 of font Main-Bold has no metrics (RIGHTWARDS ARROW FROM BAR)
+ ! Codepoint U+21a9 of font Main-Bold has no metrics (LEFTWARDS ARROW WITH HOOK)
+ ! Codepoint U+21aa of font Main-Bold has no metrics (RIGHTWARDS ARROW WITH HOOK)
+ ! Codepoint U+21cc of font Main-Bold has no metrics (RIGHTWARDS HARPOON OVER LEFTWARDS HARPOON)
+ ! Verify name gradient of KaTeX_Main-Bold glyph U+2207 matches nabla of cmbsy10 glyph 114=0x72
+ ! Codepoint U+2209 of font Main-Bold has no metrics (notelement)
+ ! Verify name suchthat of KaTeX_Main-Bold glyph U+220b matches owner of cmbsy10 glyph 51=0x33
+ ! Codepoint U+2245 of font Main-Bold has no metrics (congruent)
+ ! Codepoint U+2250 of font Main-Bold has no metrics (APPROACHES THE LIMIT)
+ ! Codepoint U+2260 of font Main-Bold has no metrics (notequal)
+ ! Codepoint U+22a8 of font Main-Bold has no metrics (TRUE)
+ ! Verify name dotmath of KaTeX_Main-Bold glyph U+22c5 matches periodcentered of cmbsy10 glyph 1=0x01
+ ! Codepoint U+22c8 of font Main-Bold has no metrics (BOWTIE)
+ ! Codepoint U+22ee of font Main-Bold has no metrics (VERTICAL ELLIPSIS)
+ ! Codepoint U+22ef of font Main-Bold has no metrics (MIDLINE HORIZONTAL ELLIPSIS)
+ ! Codepoint U+22f1 of font Main-Bold has no metrics (DOWN RIGHT DIAGONAL ELLIPSIS)
+ ! Codepoint U+27f5 of font Main-Bold has no metrics (LONG LEFTWARDS ARROW)
+ ! Codepoint U+27f6 of font Main-Bold has no metrics (LONG RIGHTWARDS ARROW)
+ ! Codepoint U+27f7 of font Main-Bold has no metrics (LONG LEFT RIGHT ARROW)
+ ! Codepoint U+27f8 of font Main-Bold has no metrics (LONG LEFTWARDS DOUBLE ARROW)
+ ! Codepoint U+27f9 of font Main-Bold has no metrics (LONG RIGHTWARDS DOUBLE ARROW)
+ ! Codepoint U+27fa of font Main-Bold has no metrics (LONG LEFT RIGHT DOUBLE ARROW)
+ ! Codepoint U+27fc of font Main-Bold has no metrics (LONG RIGHTWARDS ARROW FROM BAR)
+Main-Bold: checked 286 codepoints
+ ! Verify name quotedbl of KaTeX_Main-Italic glyph U+0022 matches quotedblright of cmti10 glyph 34=0x22
+ ! Verify name quotesingle of KaTeX_Main-Italic glyph U+0027 matches quoteright of cmti10 glyph 39=0x27
+ ! Verify name asciicircum of KaTeX_Main-Italic glyph U+005e matches circumflex of cmti10 glyph 94=0x5e
+ ! Verify name underscore of KaTeX_Main-Italic glyph U+005f matches endash of cmti10 glyph 123=0x7b
+ ! Verify name asciitilde of KaTeX_Main-Italic glyph U+007e matches tilde of cmti10 glyph 126=0x7e
+ ! Verify name gravecomb of KaTeX_Main-Italic glyph U+0300 matches grave of cmti10 glyph 18=0x12
+ ! Verify name acutecomb of KaTeX_Main-Italic glyph U+0301 matches acute of cmti10 glyph 19=0x13
+ ! Verify name tildecomb of KaTeX_Main-Italic glyph U+0303 matches tilde of cmti10 glyph 126=0x7e
+Main-Italic: checked 123 codepoints
+ ! Verify name quotedbl of KaTeX_Main-Regular glyph U+0022 matches quotedblright of cmr10 glyph 34=0x22
+ ! Verify name quotesingle of KaTeX_Main-Regular glyph U+0027 matches quoteright of cmr10 glyph 39=0x27
+ ! Verify name asciicircum of KaTeX_Main-Regular glyph U+005e matches circumflex of cmr10 glyph 94=0x5e
+ ! Verify name underscore of KaTeX_Main-Regular glyph U+005f matches endash of cmr10 glyph 123=0x7b
+ ! Verify name asciitilde of KaTeX_Main-Regular glyph U+007e matches tilde of cmr10 glyph 126=0x7e
+ ! Verify name degree of KaTeX_Main-Regular glyph U+00b0 matches ring of cmr10 glyph 23=0x17
+ ! Verify name gravecomb of KaTeX_Main-Regular glyph U+0300 matches grave of cmr10 glyph 18=0x12
+ ! Verify name acutecomb of KaTeX_Main-Regular glyph U+0301 matches acute of cmr10 glyph 19=0x13
+ ! Verify name tildecomb of KaTeX_Main-Regular glyph U+0303 matches tilde of cmr10 glyph 126=0x7e
+ ! Codepoint U+2002 of font Main-Regular has no metrics (EN SPACE)
+ ! Codepoint U+2003 of font Main-Regular has no metrics (EM SPACE)
+ ! Codepoint U+2004 of font Main-Regular has no metrics (THREE-PER-EM SPACE)
+ ! Codepoint U+2005 of font Main-Regular has no metrics (FOUR-PER-EM SPACE)
+ ! Codepoint U+2006 of font Main-Regular has no metrics (SIX-PER-EM SPACE)
+ ! Codepoint U+2009 of font Main-Regular has no metrics (THIN SPACE)
+ ! Codepoint U+200a of font Main-Regular has no metrics (HAIR SPACE)
+ ! Verify name minute of KaTeX_Main-Regular glyph U+2032 matches prime of cmsy10 glyph 48=0x30
+ ! Verify name Ifraktur of KaTeX_Main-Regular glyph U+2111 matches Ifractur of cmsy10 glyph 61=0x3d
+ ! Verify name afii61289 of KaTeX_Main-Regular glyph U+2113 matches lscript of cmmi10 glyph 96=0x60
+ ! Verify name Rfraktur of KaTeX_Main-Regular glyph U+211c matches Rfractur of cmsy10 glyph 60=0x3c
+ ! Verify name arrowupdn of KaTeX_Main-Regular glyph U+2195 matches arrowbothv of cmsy10 glyph 108=0x6c
+ ! Verify name gradient of KaTeX_Main-Regular glyph U+2207 matches nabla of cmsy10 glyph 114=0x72
+ ! Codepoint U+2209 of font Main-Regular has no metrics (notelement)
+ ! Verify name suchthat of KaTeX_Main-Regular glyph U+220b matches owner of cmsy10 glyph 51=0x33
+ ! Verify name dotmath of KaTeX_Main-Regular glyph U+22c5 matches periodcentered of cmsy10 glyph 1=0x01
+Main-Regular: checked 290 codepoints
+ ! Verify name slash of KaTeX_Math-BoldItalic glyph U+002f matches negationslash of cmbsy10 glyph 54=0x36
+ ! Verify name omicron of KaTeX_Math-BoldItalic glyph U+03bf matches o of cmmib10 glyph 111=0x6f
+ ! Verify name phi of KaTeX_Math-BoldItalic glyph U+03c6 matches phi1 of cmmib10 glyph 39=0x27
+ ! Verify name phi1 of KaTeX_Math-BoldItalic glyph U+03d5 matches phi of cmmib10 glyph 30=0x1e
+ ! Verify name omega1 of KaTeX_Math-BoldItalic glyph U+03d6 matches pi1 of cmmib10 glyph 36=0x24
+Math-BoldItalic: checked 99 codepoints
+ ! Verify name slash of KaTeX_Math-Italic glyph U+002f matches negationslash of cmsy10 glyph 54=0x36
+ ! Verify name omicron of KaTeX_Math-Italic glyph U+03bf matches o of cmmi10 glyph 111=0x6f
+ ! Verify name phi of KaTeX_Math-Italic glyph U+03c6 matches phi1 of cmmi10 glyph 39=0x27
+ ! Verify name phi1 of KaTeX_Math-Italic glyph U+03d5 matches phi of cmmi10 glyph 30=0x1e
+ ! Verify name omega1 of KaTeX_Math-Italic glyph U+03d6 matches pi1 of cmmi10 glyph 36=0x24
+Math-Italic: checked 99 codepoints
+ ! Verify name omicron of KaTeX_Math-Regular glyph U+03bf matches o of cmmi10 glyph 111=0x6f
+ ! Verify name phi of KaTeX_Math-Regular glyph U+03c6 matches phi1 of cmmi10 glyph 39=0x27
+ ! Verify name phi1 of KaTeX_Math-Regular glyph U+03d5 matches phi of cmmi10 glyph 30=0x1e
+ ! Verify name omega1 of KaTeX_Math-Regular glyph U+03d6 matches pi1 of cmmi10 glyph 36=0x24
+Math-Regular: checked 98 codepoints
+ ! Verify name parenleft of KaTeX_Size1-Regular glyph U+0028 matches parenleftbig of cmex10 glyph 0=0x00
+ ! Verify name parenright of KaTeX_Size1-Regular glyph U+0029 matches parenrightbig of cmex10 glyph 1=0x01
+ ! Verify name slash of KaTeX_Size1-Regular glyph U+002f matches slashbig of cmex10 glyph 14=0x0e
+ ! Verify name bracketleft of KaTeX_Size1-Regular glyph U+005b matches bracketleftbig of cmex10 glyph 2=0x02
+ ! Verify name backslash of KaTeX_Size1-Regular glyph U+005c matches backslashbig of cmex10 glyph 15=0x0f
+ ! Verify name bracketright of KaTeX_Size1-Regular glyph U+005d matches bracketrightbig of cmex10 glyph 3=0x03
+ ! Verify name braceleft of KaTeX_Size1-Regular glyph U+007b matches braceleftbig of cmex10 glyph 8=0x08
+ ! Verify name braceright of KaTeX_Size1-Regular glyph U+007d matches bracerightbig of cmex10 glyph 9=0x09
+ ! Verify name circumflex of KaTeX_Size1-Regular glyph U+02c6 matches hatwide of cmex10 glyph 98=0x62
+ ! Verify name tilde of KaTeX_Size1-Regular glyph U+02dc matches tildewide of cmex10 glyph 101=0x65
+ ! Verify name tildecomb of KaTeX_Size1-Regular glyph U+0303 matches tildewide of cmex10 glyph 101=0x65
+ ! Verify name arrowup of KaTeX_Size1-Regular glyph U+2191 matches arrowtp of cmex10 glyph 120=0x78
+ ! Verify name arrowdown of KaTeX_Size1-Regular glyph U+2193 matches arrowbt of cmex10 glyph 121=0x79
+ ! Verify name arrowdblup of KaTeX_Size1-Regular glyph U+21d1 matches arrowdbltp of cmex10 glyph 126=0x7e
+ ! Verify name arrowdbldown of KaTeX_Size1-Regular glyph U+21d3 matches arrowdblbt of cmex10 glyph 127=0x7f
+ ! Verify name product of KaTeX_Size1-Regular glyph U+220f matches producttext of cmex10 glyph 81=0x51
+ ! Verify name summation of KaTeX_Size1-Regular glyph U+2211 matches summationtext of cmex10 glyph 80=0x50
+ ! Verify name radical of KaTeX_Size1-Regular glyph U+221a matches radicalbig of cmex10 glyph 112=0x70
+ ! Verify name integral of KaTeX_Size1-Regular glyph U+222b matches integraltext of cmex10 glyph 82=0x52
+Size1-Regular: checked 48 codepoints
+ ! Verify name parenleft of KaTeX_Size2-Regular glyph U+0028 matches parenleftBig of cmex10 glyph 16=0x10
+ ! Verify name parenright of KaTeX_Size2-Regular glyph U+0029 matches parenrightBig of cmex10 glyph 17=0x11
+ ! Verify name slash of KaTeX_Size2-Regular glyph U+002f matches slashBig of cmex10 glyph 46=0x2e
+ ! Verify name bracketleft of KaTeX_Size2-Regular glyph U+005b matches bracketleftBig of cmex10 glyph 104=0x68
+ ! Verify name backslash of KaTeX_Size2-Regular glyph U+005c matches backslashBig of cmex10 glyph 47=0x2f
+ ! Verify name bracketright of KaTeX_Size2-Regular glyph U+005d matches bracketrightBig of cmex10 glyph 105=0x69
+ ! Verify name braceleft of KaTeX_Size2-Regular glyph U+007b matches braceleftBig of cmex10 glyph 110=0x6e
+ ! Verify name braceright of KaTeX_Size2-Regular glyph U+007d matches bracerightBig of cmex10 glyph 111=0x6f
+ ! Verify name circumflex of KaTeX_Size2-Regular glyph U+02c6 matches hatwider of cmex10 glyph 99=0x63
+ ! Verify name tilde of KaTeX_Size2-Regular glyph U+02dc matches tildewider of cmex10 glyph 102=0x66
+ ! Verify name tildecomb of KaTeX_Size2-Regular glyph U+0303 matches tildewider of cmex10 glyph 102=0x66
+ ! Verify name product of KaTeX_Size2-Regular glyph U+220f matches productdisplay of cmex10 glyph 89=0x59
+ ! Verify name summation of KaTeX_Size2-Regular glyph U+2211 matches summationdisplay of cmex10 glyph 88=0x58
+ ! Verify name radical of KaTeX_Size2-Regular glyph U+221a matches radicalBig of cmex10 glyph 113=0x71
+ ! Verify name integral of KaTeX_Size2-Regular glyph U+222b matches integraldisplay of cmex10 glyph 90=0x5a
+Size2-Regular: checked 40 codepoints
+ ! Verify name parenleft of KaTeX_Size3-Regular glyph U+0028 matches parenleftbigg of cmex10 glyph 18=0x12
+ ! Verify name parenright of KaTeX_Size3-Regular glyph U+0029 matches parenrightbigg of cmex10 glyph 19=0x13
+ ! Verify name slash of KaTeX_Size3-Regular glyph U+002f matches slashbigg of cmex10 glyph 30=0x1e
+ ! Verify name bracketleft of KaTeX_Size3-Regular glyph U+005b matches bracketleftbigg of cmex10 glyph 20=0x14
+ ! Verify name backslash of KaTeX_Size3-Regular glyph U+005c matches backslashbigg of cmex10 glyph 31=0x1f
+ ! Verify name bracketright of KaTeX_Size3-Regular glyph U+005d matches bracketrightbigg of cmex10 glyph 21=0x15
+ ! Verify name braceleft of KaTeX_Size3-Regular glyph U+007b matches braceleftbigg of cmex10 glyph 26=0x1a
+ ! Verify name braceright of KaTeX_Size3-Regular glyph U+007d matches bracerightbigg of cmex10 glyph 27=0x1b
+ ! Verify name circumflex of KaTeX_Size3-Regular glyph U+02c6 matches hatwidest of cmex10 glyph 100=0x64
+ ! Verify name tilde of KaTeX_Size3-Regular glyph U+02dc matches tildewidest of cmex10 glyph 103=0x67
+ ! Verify name tildecomb of KaTeX_Size3-Regular glyph U+0303 matches tildewidest of cmex10 glyph 103=0x67
+ ! Verify name radical of KaTeX_Size3-Regular glyph U+221a matches radicalbigg of cmex10 glyph 114=0x72
+Size3-Regular: checked 24 codepoints
+ ! Verify name parenleft of KaTeX_Size4-Regular glyph U+0028 matches parenleftBigg of cmex10 glyph 32=0x20
+ ! Verify name parenright of KaTeX_Size4-Regular glyph U+0029 matches parenrightBigg of cmex10 glyph 33=0x21
+ ! Verify name slash of KaTeX_Size4-Regular glyph U+002f matches slashBigg of cmex10 glyph 44=0x2c
+ ! Verify name bracketleft of KaTeX_Size4-Regular glyph U+005b matches bracketleftBigg of cmex10 glyph 34=0x22
+ ! Verify name backslash of KaTeX_Size4-Regular glyph U+005c matches backslashBigg of cmex10 glyph 45=0x2d
+ ! Verify name bracketright of KaTeX_Size4-Regular glyph U+005d matches bracketrightBigg of cmex10 glyph 35=0x23
+ ! Verify name braceleft of KaTeX_Size4-Regular glyph U+007b matches braceleftBigg of cmex10 glyph 40=0x28
+ ! Verify name braceright of KaTeX_Size4-Regular glyph U+007d matches bracerightBigg of cmex10 glyph 41=0x29
+ ! Verify name circumflex of KaTeX_Size4-Regular glyph U+02c6 matches hatwide of msbm10 glyph 91=0x5b
+ ! Verify name tilde of KaTeX_Size4-Regular glyph U+02dc matches tildewide of msbm10 glyph 93=0x5d
+ ! Verify name tildecomb of KaTeX_Size4-Regular glyph U+0303 matches tildewide of msbm10 glyph 93=0x5d
+ ! Verify name radical of KaTeX_Size4-Regular glyph U+221a matches radicalBigg of cmex10 glyph 115=0x73
+ ! Codepoint U+e154 of font Size4-Regular has no metrics (???)
+Size4-Regular: checked 51 codepoints
