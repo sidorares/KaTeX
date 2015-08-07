@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Screenshotter test</title>
+    <script src="../lib/katex/katex.min.js" type="text/javascript"></script>
+    <link href="../lib/katex/katex.min.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+      #math, #pre, #post {
+        font-size: 4em;
+      }
+      body {
+        font-family: "DejaVu Serif",serif;
+      }
+    </style>
+  </head>
+  <body>
+    <span id="pre"></span>
+    <span id="math"></span>
+    <span id="post"></span>
+    <script type="text/javascript">
+      var query = {"tex":"\\blue{a}\\color{#0f0}{b}\\color{red}{c}","nolatex":"different syntax and different scope","query":"tex=%5Cblue%7Ba%7D%5Ccolor%7B%230f0%7D%7Bb%7D%5Ccolor%7Bred%7D%7Bc%7D"};
+      var mathNode = document.getElementById("math");
+
+      var settings = {
+          displayMode: !!query["display"],
+          breakOnUnsupportedCmds: !query["doNotBreak"]
+      };
+      if (query["errorColor"]) {
+          settings.errorColor = query["errorColor"];
+      }
+
+      katex.render(query["tex"], mathNode, settings);
+      document.getElementById("pre").innerHTML = query["pre"] || "";
+      document.getElementById("post").innerHTML = query["post"] || "";
+    </script>
+  </body>
+</html>

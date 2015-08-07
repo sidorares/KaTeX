@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Screenshotter test</title>
+    <script src="../lib/katex/katex.min.js" type="text/javascript"></script>
+    <link href="../lib/katex/katex.min.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+      #math, #pre, #post {
+        font-size: 4em;
+      }
+      body {
+        font-family: "DejaVu Serif",serif;
+      }
+    </style>
+  </head>
+  <body>
+    <span id="pre"></span>
+    <span id="math"></span>
+    <span id="post"></span>
+    <script type="text/javascript">
+      var query = {"tex":"{\\displaystyle\\sqrt{x}}{\\sqrt{x}}\n{\\displaystyle \\frac12}{\\frac12}{\\displaystyle x^1_2}{x^1_2}\n","query":"tex=%7B%5Cdisplaystyle%5Csqrt%7Bx%7D%7D%7B%5Csqrt%7Bx%7D%7D%0A%7B%5Cdisplaystyle%20%5Cfrac12%7D%7B%5Cfrac12%7D%7B%5Cdisplaystyle%20x%5E1_2%7D%7Bx%5E1_2%7D%0A"};
+      var mathNode = document.getElementById("math");
+
+      var settings = {
+          displayMode: !!query["display"],
+          breakOnUnsupportedCmds: !query["doNotBreak"]
+      };
+      if (query["errorColor"]) {
+          settings.errorColor = query["errorColor"];
+      }
+
+      katex.render(query["tex"], mathNode, settings);
+      document.getElementById("pre").innerHTML = query["pre"] || "";
+      document.getElementById("post").innerHTML = query["post"] || "";
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Screenshotter test</title>
+    <script src="../lib/katex/katex.min.js" type="text/javascript"></script>
+    <link href="../lib/katex/katex.min.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+      #math, #pre, #post {
+        font-size: 4em;
+      }
+      body {
+        font-family: "DejaVu Serif",serif;
+      }
+    </style>
+  </head>
+  <body>
+    <span id="pre"></span>
+    <span id="math"></span>
+    <span id="post"></span>
+    <script type="text/javascript">
+      var query = {"tex":"+\\left\\{\\rule{0.1em}{1em}\\right.\nx^{+\\left\\{\\rule{0.1em}{1em}\\right.\nx^{+\\left\\{\\rule{0.1em}{1em}\\right.}}\n","query":"tex=%2B%5Cleft%5C%7B%5Crule%7B0.1em%7D%7B1em%7D%5Cright.%0Ax%5E%7B%2B%5Cleft%5C%7B%5Crule%7B0.1em%7D%7B1em%7D%5Cright.%0Ax%5E%7B%2B%5Cleft%5C%7B%5Crule%7B0.1em%7D%7B1em%7D%5Cright.%7D%7D%0A"};
+      var mathNode = document.getElementById("math");
+
+      var settings = {
+          displayMode: !!query["display"],
+          breakOnUnsupportedCmds: !query["doNotBreak"]
+      };
+      if (query["errorColor"]) {
+          settings.errorColor = query["errorColor"];
+      }
+
+      katex.render(query["tex"], mathNode, settings);
+      document.getElementById("pre").innerHTML = query["pre"] || "";
+      document.getElementById("post").innerHTML = query["post"] || "";
+    </script>
+  </body>
+</html>

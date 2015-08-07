@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Screenshotter test</title>
+    <script src="../lib/katex/katex.min.js" type="text/javascript"></script>
+    <link href="../lib/katex/katex.min.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+      #math, #pre, #post {
+        font-size: 4em;
+      }
+      body {
+        font-family: "DejaVu Serif",serif;
+      }
+    </style>
+  </head>
+  <body>
+    <span id="pre"></span>
+    <span id="math"></span>
+    <span id="post"></span>
+    <script type="text/javascript">
+      var query = {"tex":"\\dfrac{a}{b}\\frac{a}{b}\\tfrac{a}{b}\\;-\\dfrac12\\;1\\tfrac12","query":"tex=%5Cdfrac%7Ba%7D%7Bb%7D%5Cfrac%7Ba%7D%7Bb%7D%5Ctfrac%7Ba%7D%7Bb%7D%5C%3B-%5Cdfrac12%5C%3B1%5Ctfrac12"};
+      var mathNode = document.getElementById("math");
+
+      var settings = {
+          displayMode: !!query["display"],
+          breakOnUnsupportedCmds: !query["doNotBreak"]
+      };
+      if (query["errorColor"]) {
+          settings.errorColor = query["errorColor"];
+      }
+
+      katex.render(query["tex"], mathNode, settings);
+      document.getElementById("pre").innerHTML = query["pre"] || "";
+      document.getElementById("post").innerHTML = query["post"] || "";
+    </script>
+  </body>
+</html>

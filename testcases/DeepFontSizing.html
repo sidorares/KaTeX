@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Screenshotter test</title>
+    <script src="../lib/katex/katex.min.js" type="text/javascript"></script>
+    <link href="../lib/katex/katex.min.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+      #math, #pre, #post {
+        font-size: 4em;
+      }
+      body {
+        font-family: "DejaVu Serif",serif;
+      }
+    </style>
+  </head>
+  <body>
+    <span id="pre"></span>
+    <span id="math"></span>
+    <span id="post"></span>
+    <script type="text/javascript">
+      var query = {"tex":"a^{\\big| x^{\\big(}}_{\\Big\\uparrow} +\ni^{i^{\\Huge x}_y}_{\\Huge z} +\n\\dfrac{\\Huge x}{y}\n","nolatex":"\\Huge inside \\dfrac doesn't work, needs an extra {…}","query":"tex=a%5E%7B%5Cbig%7C%20x%5E%7B%5Cbig(%7D%7D_%7B%5CBig%5Cuparrow%7D%20%2B%0Ai%5E%7Bi%5E%7B%5CHuge%20x%7D_y%7D_%7B%5CHuge%20z%7D%20%2B%0A%5Cdfrac%7B%5CHuge%20x%7D%7By%7D%0A"};
+      var mathNode = document.getElementById("math");
+
+      var settings = {
+          displayMode: !!query["display"],
+          breakOnUnsupportedCmds: !query["doNotBreak"]
+      };
+      if (query["errorColor"]) {
+          settings.errorColor = query["errorColor"];
+      }
+
+      katex.render(query["tex"], mathNode, settings);
+      document.getElementById("pre").innerHTML = query["pre"] || "";
+      document.getElementById("post").innerHTML = query["post"] || "";
+    </script>
+  </body>
+</html>

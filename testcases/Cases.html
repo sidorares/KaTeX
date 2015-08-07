@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Screenshotter test</title>
+    <script src="../lib/katex/katex.min.js" type="text/javascript"></script>
+    <link href="../lib/katex/katex.min.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+      #math, #pre, #post {
+        font-size: 4em;
+      }
+      body {
+        font-family: "DejaVu Serif",serif;
+      }
+    </style>
+  </head>
+  <body>
+    <span id="pre"></span>
+    <span id="math"></span>
+    <span id="post"></span>
+    <script type="text/javascript">
+      var query = {"tex":"f(a,b)=\\begin{cases}\n    a+1&\\text{if }b\\text{ is odd} \\\\\n    a&\\text{if }b=0 \\\\\n    a-1&\\text{otherwise}\n\\end{cases}\n","query":"tex=f(a%2Cb)%3D%5Cbegin%7Bcases%7D%0A%20%20%20%20a%2B1%26%5Ctext%7Bif%20%7Db%5Ctext%7B%20is%20odd%7D%20%5C%5C%0A%20%20%20%20a%26%5Ctext%7Bif%20%7Db%3D0%20%5C%5C%0A%20%20%20%20a-1%26%5Ctext%7Botherwise%7D%0A%5Cend%7Bcases%7D%0A"};
+      var mathNode = document.getElementById("math");
+
+      var settings = {
+          displayMode: !!query["display"],
+          breakOnUnsupportedCmds: !query["doNotBreak"]
+      };
+      if (query["errorColor"]) {
+          settings.errorColor = query["errorColor"];
+      }
+
+      katex.render(query["tex"], mathNode, settings);
+      document.getElementById("pre").innerHTML = query["pre"] || "";
+      document.getElementById("post").innerHTML = query["post"] || "";
+    </script>
+  </body>
+</html>
