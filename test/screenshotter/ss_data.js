@@ -11,7 +11,6 @@ var fs = require("fs");
 var jsyaml = require("js-yaml");
 var querystring = require("querystring");
 
-var queryKeys = ["tex", "pre", "post", "display", "doNotBreak", "errorColor"];
 var dict = fs.readFileSync(require.resolve("./ss_data.yaml"));
 dict = jsyaml.safeLoad(dict);
 for (var key in dict) {
@@ -19,12 +18,6 @@ for (var key in dict) {
     if (typeof itm === "string") {
         itm = dict[key] = { tex: itm };
     }
-    var query = {};
-    queryKeys.forEach(function(key) {
-        if (itm.hasOwnProperty(key)) {
-            query[key] = itm[key];
-        }
-    });
-    itm.query = querystring.stringify(query);
+    itm.query = querystring.stringify(itm);
 }
 module.exports = dict;
