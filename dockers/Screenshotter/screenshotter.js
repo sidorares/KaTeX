@@ -187,6 +187,7 @@ function tryConnect() {
         port: +seleniumPort
     });
     sock.on("connect", function() {
+        console.log("Selenium server seems ready");
         sock.end();
         attempts = 0;
         process.nextTick(buildDriver);
@@ -194,6 +195,7 @@ function tryConnect() {
         if (++attempts > 50) {
             throw new Error("Failed to connect selenium server.");
         }
+        console.log("Waiting for selenium server");
         setTimeout(tryConnect, 200);
     });
 }
@@ -203,12 +205,14 @@ function tryConnect() {
 
 var driver;
 function buildDriver() {
+    console.log("Building driver");
     var builder = new selenium.Builder().forBrowser(opts.browser);
     if (seleniumURL) {
         builder.usingServer(seleniumURL);
     }
     driver = builder.build();
     driver.manage().timeouts().setScriptTimeout(3000).then(function() {
+        console.log("timeout set, setting size");
         setSize(targetW, targetH);
     });
 }
@@ -219,18 +223,22 @@ function buildDriver() {
 var targetW = 1024, targetH = 768;
 function setSize(reqW, reqH) {
     return driver.manage().window().setSize(reqW, reqH).then(function() {
+        console.log("size set, taking screenshot");
         return driver.takeScreenshot();
     }).then(function(img) {
         img = imageDimensions(img);
         var actualW = img.width;
         var actualH = img.height;
+        console.log("screenshot has " + actualW + "x" + actualH);
         if (actualW === targetW && actualH === targetH) {
+            console.log("ready to do tests");
             process.nextTick(takeScreenshots);
             return;
         }
         if (++attempts > 5) {
             throw new Error("Failed to set window size correctly.");
         }
+        console.log("trying again with updated size");
         return setSize(targetW + reqW - actualW, targetH + reqH - actualH);
     }, check);
 }
@@ -270,6 +278,7 @@ function takeScreenshot(key) {
         loadExpected = promisify(fs.readFile, file);
     }
 
+    console.log("queueing " + key);
     var url = katexURL + "test/screenshotter/test.html?" + itm.query;
     driver.get(url);
     driver.takeScreenshot().then(haveScreenshot).then(function() {
@@ -283,6 +292,7 @@ function takeScreenshot(key) {
     }, check);
 
     function haveScreenshot(img) {
+        console.log("have screenshot for " + key);
         img = imageDimensions(img);
         if (img.width !== targetW || img.height !== targetH) {
             throw new Error("Excpected " + targetW + " x " + targetH +
