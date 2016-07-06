@@ -189,10 +189,12 @@ function tryConnect() {
         port: +seleniumPort,
     });
     sock.on("connect", function() {
+        console.log("Selenium server accepting connections.");
         sock.end();
         attempts = 0;
         process.nextTick(buildDriver);
     }).on("error", function() {
+        console.log("Selenium server not ready yet.");
         if (++attempts > 50) {
             throw new Error("Failed to connect selenium server.");
         }
@@ -216,6 +218,7 @@ function buildDriver() {
         builder.usingServer(seleniumURL);
     }
     driver = builder.build();
+    console.log("Driver built.");
     driver.manage().timeouts().setScriptTimeout(3000).then(function() {
         setSize(targetW, targetH);
     });
@@ -233,6 +236,9 @@ function setSize(reqW, reqH) {
         img = imageDimensions(img);
         var actualW = img.width;
         var actualH = img.height;
+        console.log("Set size: want " + targetW + "x" + targetH +
+                    ", requested " + reqW + "x" + reqH +
+                    ", got " + actualW + "x" + actualH);
         if (actualW === targetW && actualH === targetH) {
             process.nextTick(takeScreenshots);
             return;
@@ -262,6 +268,7 @@ var exitStatus = 0;
 var listOfFailed = [];
 
 function takeScreenshots() {
+    console.log("Now taking screenshots.");
     listOfCases.forEach(takeScreenshot);
 }
 
@@ -292,6 +299,7 @@ function takeScreenshot(key) {
     }, check);
 
     function haveScreenshot(img) {
+        console.log("Have screenshot for " + key);
         img = imageDimensions(img);
         if (img.width !== targetW || img.height !== targetH) {
             throw new Error("Excpected " + targetW + " x " + targetH +
