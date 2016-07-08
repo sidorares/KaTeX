@@ -18,6 +18,24 @@ var dstDir = path.normalize(
     path.join(__dirname, "..", "..", "test", "screenshotter", "images"));
 
 //////////////////////////////////////////////////////////////////////
+// Heartbeat to detect a hung process
+
+var lastbeat = "starting up";
+var watchdogTimeout = 60 * 1000; // one minute
+var watchdog = setTimeout(hung, watchdogTimeout);
+
+function hung() {
+    console.error("Snapshotter got hung " + lastbeat + ", killing");
+    process.exit(8);
+}
+
+function heartbeat(msg) {
+    lastbeat = msg;
+    clearTimeout(watchdog);
+    setTimeout(hung, watchdogTimeout);
+}
+
+//////////////////////////////////////////////////////////////////////
 // Process command line arguments
 
 var opts = require("nomnom")
@@ -69,6 +87,10 @@ var opts = require("nomnom")
         flag: true,
         help: "Check whether screenshot matches current file content",
     })
+    .option("watchdog", {
+        "default": watchdogTimeout / 1000,
+        help: "Number of seconds to wait detecing a hung process",
+    })
     .parse();
 
 var listOfCases;
@@ -76,6 +98,10 @@ if (opts.include) {
     listOfCases = opts.include.split(",");
 } else {
     listOfCases = Object.keys(data);
+}
+if (+opts.watchdog > 0) {
+    watchdogTimeout = 1000 * (+opts.watchdog);
+    // in effect after next heartbeat
 }
 if (opts.exclude) {
     var exclude = opts.exclude.split(",");
@@ -90,6 +116,8 @@ var seleniumPort = opts.seleniumPort;
 var katexURL = opts.katexURL;
 var katexIP = opts.katexIP;
 var katexPort = opts.katexPort;
+
+heartbeat("after parsing command line");
 
 //////////////////////////////////////////////////////////////////////
 // Work out connection to selenium docker container
@@ -111,6 +139,7 @@ function cmd() {
 }
 
 function guessDockerIPs() {
+    heartbeat("guessing Docker IPs");
     if (process.env.DOCKER_MACHINE_NAME) {
         var machine = process.env.DOCKER_MACHINE_NAME;
         seleniumIP = cmd("docker-machine", "ip", machine);
@@ -148,6 +177,7 @@ if (seleniumURL) {
     console.log("Selenium driver in local session");
 }
 
+heartbeat("after synchronous configuration");
 process.nextTick(startServer);
 var attempts = 0;
 
@@ -163,9 +193,11 @@ function startServer() {
         process.nextTick(tryConnect);
         return;
     }
+    heartbeat("starting server");
     var port = Math.floor(Math.random() * (maxPort - minPort)) + minPort;
     var server = http.createServer(app).listen(port);
     server.once("listening", function() {
+        heartbeat("after starting server");
         devServer = server;
         katexPort = port;
         attempts = 0;
@@ -186,6 +218,7 @@ function startServer() {
 // Wait for container to become ready
 
 function tryConnect() {
+    heartbeat("connecting to selenium");
     if (!katexURL) {
         katexURL = "http://" + katexIP + ":" + katexPort + "/";
         console.log("KaTeX URL is " + katexURL);
@@ -206,6 +239,7 @@ function tryConnect() {
         if (++attempts > 50) {
             throw new Error("Failed to connect selenium server.");
         }
+        heartbeat("waiting for selenium");
         setTimeout(tryConnect, 200);
     });
 }
@@ -215,6 +249,7 @@ function tryConnect() {
 
 var driver;
 function buildDriver() {
+    heartbeat("configuring driver");
     var builder = new selenium.Builder().forBrowser(opts.browser);
     var ffProfile = new firefox.Profile();
     ffProfile.setPreference(
@@ -225,8 +260,10 @@ function buildDriver() {
     if (seleniumURL) {
         builder.usingServer(seleniumURL);
     }
+    heartbeat("building driver");
     driver = builder.build();
     driver.manage().timeouts().setScriptTimeout(3000).then(function() {
+        heartbeat("setting initial size");
         setSize(targetW, targetH);
     });
 }
@@ -238,6 +275,7 @@ var targetW = 1024;
 var targetH = 768;
 function setSize(reqW, reqH) {
     return driver.manage().window().setSize(reqW, reqH).then(function() {
+        heartbeat("taking screenshot for size");
         return driver.takeScreenshot();
     }).then(function(img) {
         img = imageDimensions(img);
@@ -250,6 +288,7 @@ function setSize(reqW, reqH) {
         if (++attempts > 5) {
             throw new Error("Failed to set window size correctly.");
         }
+        heartbeat("setting refined size");
         return setSize(targetW + reqW - actualW, targetH + reqH - actualH);
     }, check);
 }
@@ -272,6 +311,7 @@ var exitStatus = 0;
 var listOfFailed = [];
 
 function takeScreenshots() {
+    heartbeat("taking actual screenshots");
     listOfCases.forEach(takeScreenshot);
 }
 
@@ -292,16 +332,19 @@ function takeScreenshot(key) {
     var url = katexURL + "test/screenshotter/test.html?" + itm.query;
     driver.get(url);
     driver.takeScreenshot().then(haveScreenshot).then(function() {
+        heartbeat("after processing " + key);
         if (--countdown === 0) {
             if (listOfFailed.length) {
                 console.error("Failed: " + listOfFailed.join(" "));
             }
             // devServer.close(cb) will take too long.
+            heartbeat("terminating");
             process.exit(exitStatus);
         }
     }, check);
 
     function haveScreenshot(img) {
+        heartbeat("after screenshot for " + key);
         img = imageDimensions(img);
         if (img.width !== targetW || img.height !== targetH) {
             throw new Error("Excpected " + targetW + " x " + targetH +
@@ -335,6 +378,7 @@ function takeScreenshot(key) {
                     } else {
                         console.log("error " + key);
                         driver.get(url);
+                        heartbeat("retrying screenshot for " + key);
                         browserSideWait(500 * retry);
                         return driver.takeScreenshot().then(haveScreenshot);
                     }
