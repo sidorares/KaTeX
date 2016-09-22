@@ -592,6 +592,7 @@ function prepare(dom, canvas, options) {
         box.width = renderer.x;
         box.depth = dom.depth * em;
         box.height = dom.height * em;
+        box.list = renderer.outList;
         return box;
     });
 }

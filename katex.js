@@ -54,6 +54,27 @@ var renderToString = function(expression, options) {
     return buildTree(tree, expression, settings).toMarkup();
 };
 
+var atomsBox = function(expression, options, measureText) {
+  var ctx = {
+    measureText: function(text) {
+      return measureText(text, this.font);
+    }
+  };
+  var canvas = {
+    getContext: function() {
+      return ctx;
+    }
+  }
+
+  var settings = new Settings(options);
+
+  var tree = parseTree(expression, settings);
+  var dom = buildHTML(tree, settings);
+  var box = canvasRenderer.prepare(dom, canvas, options);
+  debugger;
+  console.log(box.list);
+}
+
 /**
  * Parse and build an expression, and render that expression to the
  * canvas at the specified position.
@@ -91,6 +112,7 @@ module.exports = {
     render: render,
     renderToString: renderToString,
     renderToCanvas: renderToCanvas,
+    atomsBox: atomsBox,
     canvasBox: canvasBox,
     /**
      * NOTE: This method is not currently recommended for public use.
