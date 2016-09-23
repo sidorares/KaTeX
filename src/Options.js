@@ -6,9 +6,9 @@
  */
 
 /**
- * This is the main options class. It contains the style, size, and color of the
- * current parse level. It also contains the style and size of the parent parse
- * level, so size changes can be handled efficiently.
+ * This is the main options class. It contains the style, size, color, and font
+ * of the current parse level. It also contains the style and size of the parent
+ * parse level, so size changes can be handled efficiently.
  *
  * Each of the `.with*` and `.reset` functions passes its current style and size
  * as the parentStyle and parentSize of the new options class, so parent
@@ -19,6 +19,7 @@ function Options(data) {
     this.color = data.color;
     this.size = data.size;
     this.phantom = data.phantom;
+    this.font = data.font;
 
     if (data.parentStyle === undefined) {
         this.parentStyle = data.style;
@@ -44,7 +45,8 @@ Options.prototype.extend = function(extension) {
         color: this.color,
         parentStyle: this.style,
         parentSize: this.size,
-        phantom: this.phantom
+        phantom: this.phantom,
+        font: this.font,
     };
 
     for (var key in extension) {
@@ -61,7 +63,7 @@ Options.prototype.extend = function(extension) {
  */
 Options.prototype.withStyle = function(style) {
     return this.extend({
-        style: style
+        style: style,
     });
 };
 
@@ -70,7 +72,7 @@ Options.prototype.withStyle = function(style) {
  */
 Options.prototype.withSize = function(size) {
     return this.extend({
-        size: size
+        size: size,
     });
 };
 
@@ -79,7 +81,7 @@ Options.prototype.withSize = function(size) {
  */
 Options.prototype.withColor = function(color) {
     return this.extend({
-        color: color
+        color: color,
     });
 };
 
@@ -88,7 +90,16 @@ Options.prototype.withColor = function(color) {
  */
 Options.prototype.withPhantom = function() {
     return this.extend({
-        phantom: true
+        phantom: true,
+    });
+};
+
+/**
+ * Create a new options objects with the give font.
+ */
+Options.prototype.withFont = function(font) {
+    return this.extend({
+        font: font,
     });
 };
 
@@ -160,7 +171,7 @@ var colorMap = {
     "katex-grayH": "#555555",
     "katex-grayI": "#333333",
     "katex-kaBlue": "#314453",
-    "katex-kaGreen": "#639b24"
+    "katex-kaGreen": "#639b24",
 };
 
 /**

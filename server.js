@@ -1,25 +1,35 @@
+/* eslint no-console:0 */
 var fs = require("fs");
 var path = require("path");
 
 var browserify = require("browserify");
 var express = require("express");
+var glob = require("glob");
 var less = require("less");
 
 var app = express();
 
-app.use(express.logger());
+if (require.main === module) {
+    app.use(express.logger());
+}
 
 var serveBrowserified = function(file, standaloneName) {
     return function(req, res, next) {
-        var b = browserify();
-        b.add(file);
+        var files;
+        if (Array.isArray(file)) {
+            files = file;
+        } else if (file.indexOf("*") !== -1) {
+            files = glob.sync(file);
+        } else {
+            files = [file];
+        }
 
         var options = {};
         if (standaloneName) {
             options.standalone = standaloneName;
         }
-
-        var stream = b.bundle(options);
+        var b = browserify(files, options);
+        var stream = b.bundle();
 
         var body = "";
         stream.on("data", function(s) { body += s; });
@@ -32,7 +42,14 @@ var serveBrowserified = function(file, standaloneName) {
 };
 
 app.get("/katex.js", serveBrowserified("./katex", "katex"));
-app.get("/test/katex-spec.js", serveBrowserified("./test/katex-spec"));
+app.use("/test/jasmine",
+    express["static"](
+        path.dirname(
+            require.resolve("jasmine-core/lib/jasmine-core/jasmine.js")
+        )
+    )
+);
+app.get("/test/katex-spec.js", serveBrowserified("./test/*[Ss]pec.js"));
 app.get("/contrib/auto-render/auto-render.js",
         serveBrowserified("./contrib/auto-render/auto-render",
                           "renderMathInElement"));
@@ -46,7 +63,7 @@ app.get("/katex.css", function(req, res, next) {
 
         var parser = new less.Parser({
             paths: ["./static"],
-            filename: "katex.less"
+            filename: "katex.less",
         });
 
         parser.parse(data, function(err, tree) {
@@ -72,5 +89,9 @@ app.use(function(err, req, res, next) {
     res.send(500, err.stack);
 });
 
-app.listen(7936);
-console.log("Serving on http://0.0.0.0:7936/ ...");
+if (require.main === module) {
+    app.listen(7936);
+    console.log("Serving on http://0.0.0.0:7936/ ...");
+}
+
+module.exports = app;

@@ -2,16 +2,21 @@
 
 We welcome pull requests to KaTeX. If you'd like to add a new symbol, or try to
 tackle adding a larger feature, keep reading. If you have any questions, or want
-help solving a problem, feel free to stop by the [#katex room on
-freenode](http://webchat.freenode.net/?channels=katex).
+help solving a problem, feel free to stop by our [gitter channel](https://gitter.im/Khan/KaTeX).
 
 ## Helpful contributions
 
 If you'd like to contribute, try contributing new symbols or functions that
 KaTeX doesn't currently support. The wiki has a page which lists [all of the
 supported
-functions](https://github.com/Khan/KaTeX/wiki/Function-Support-in-KaTeX). You
-can check there to see if we don't support a function you like, or try your
+functions](https://github.com/Khan/KaTeX/wiki/Function-Support-in-KaTeX) as 
+well as a page that describes how to [examine TeX commands and where to find 
+rules](https://github.com/Khan/KaTeX/wiki/Examining-TeX) which can be quite 
+useful when adding new commands. There's also a user-contributed [preview page]
+(http://utensil-site.github.io/available-in-katex/)
+showing how KaTeX would render a series of symbols/functions (including the ones
+MathJax listed in their documentation and the extra ones supported by KaTeX). You
+can check them to see if we don't support a function you like, or try your
 function in the interactive demo at
 [http://khan.github.io/KaTeX/](http://khan.github.io/KaTeX/).
 
@@ -83,7 +88,7 @@ changed and why. Otherwise, figure out what is causing the changes and fix it!
 
 If you add a feature that is dependent on the final output looking the way you
 created it, add a screenshot test. See
-[ss_data.json](test/screenshotter/ss_data.json).
+[ss_data.yaml](test/screenshotter/ss_data.yaml).
 
 #### Testing in other browsers
 
@@ -100,8 +105,17 @@ Code
  - 80 character line length
  - commas last
  - declare variables in the outermost scope that they are used
+ - camelCase for variables in JavaScript
+ - snake_case for variables in Python
 
 In general, try to make your code blend in with the surrounding code.
+
+## Pull Requests
+ 
+ - link back to the original issue(s) whenever possible
+ - new commands should be added to the [wiki](https://github.com/Khan/KaTeX/wiki/Function-Support-in-KaTeX)
+ - commits should be squashed before merging
+ - large pull requests should be broken into separate pull requests (or multiple logically cohesive commits), if possible
 
 ## CLA
 

@@ -15,7 +15,8 @@ var indexOf = function(list, elem) {
     if (nativeIndexOf && list.indexOf === nativeIndexOf) {
         return list.indexOf(elem);
     }
-    var i = 0, l = list.length;
+    var i = 0;
+    var l = list.length;
     for (; i < l; i++) {
         if (list[i] === elem) {
             return i;
@@ -31,6 +32,13 @@ var contains = function(list, elem) {
     return indexOf(list, elem) !== -1;
 };
 
+/**
+ * Provide a default value if a setting is undefined
+ */
+var deflt = function(setting, defaultIfUndefined) {
+    return setting === undefined ? defaultIfUndefined : setting;
+};
+
 // hyphenate and escape adapted from Facebook's React under Apache 2 license
 
 var uppercase = /([A-Z])/g;
@@ -39,17 +47,17 @@ var hyphenate = function(str) {
 };
 
 var ESCAPE_LOOKUP = {
-  "&": "&amp;",
-  ">": "&gt;",
-  "<": "&lt;",
-  "\"": "&quot;",
-  "'": "&#x27;"
+    "&": "&amp;",
+    ">": "&gt;",
+    "<": "&lt;",
+    "\"": "&quot;",
+    "'": "&#x27;",
 };
 
 var ESCAPE_REGEX = /[&><"']/g;
 
 function escaper(match) {
-  return ESCAPE_LOOKUP[match];
+    return ESCAPE_LOOKUP[match];
 }
 
 /**
@@ -59,7 +67,7 @@ function escaper(match) {
  * @return {string} An escaped string.
  */
 function escape(text) {
-  return ("" + text).replace(ESCAPE_REGEX, escaper);
+    return ("" + text).replace(ESCAPE_REGEX, escaper);
 }
 
 /**
@@ -89,9 +97,10 @@ function clearNode(node) {
 
 module.exports = {
     contains: contains,
+    deflt: deflt,
     escape: escape,
     hyphenate: hyphenate,
     indexOf: indexOf,
     setTextContent: setTextContent,
-    clearNode: clearNode
+    clearNode: clearNode,
 };

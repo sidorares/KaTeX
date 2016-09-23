@@ -1,3 +1,4 @@
+/* eslint no-console:0 */
 /**
  * This is the main entry point for KaTeX. Here, we expose functions for
  * rendering expressions either to DOM nodes or to markup strings.
@@ -83,7 +84,7 @@ var renderToCanvas = function(expression, canvas, x, y, options) {
     var settings = new Settings(options);
 
     var tree = parseTree(expression, settings);
-    var dom = buildHTML(tree, settings);
+    var dom = buildHTML(tree, settings.initialOptions());
     canvasRenderer.render(dom, canvas, x, y, options);
 };
 
@@ -96,7 +97,7 @@ var canvasBox = function(expression, canvas, options) {
     var settings = new Settings(options);
 
     var tree = parseTree(expression, settings);
-    var dom = buildHTML(tree, settings);
+    var dom = buildHTML(tree, settings.initialOptions());
     return canvasRenderer.prepare(dom, canvas, options);
 };
 
@@ -120,5 +121,5 @@ module.exports = {
      * to change. Use at your own risk.
      */
     __parse: generateParseTree,
-    ParseError: ParseError
+    ParseError: ParseError,
 };
